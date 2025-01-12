@@ -6,76 +6,219 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Payment Successful - Push To Talk</title>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
      <style>
+         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+ 
+         * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+         }
+ 
          body {
-             font-family: Arial, sans-serif;
+             font-family: 'Inter', sans-serif;
+             min-height: 100vh;
              display: flex;
-             flex-direction: column;
              align-items: center;
              justify-content: center;
-             height: 100vh;
-             margin: 0;
-             background-color: #f0f2f5;
+             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             padding: 20px;
          }
+ 
          .container {
+             background: rgba(255, 255, 255, 0.95);
+             padding: 2.5rem;
+             border-radius: 16px;
+             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+             max-width: 600px;
+             width: 100%;
              text-align: center;
-             padding: 2rem;
-             background: white;
-             border-radius: 8px;
-             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-             max-width: 500px;
+             animation: slideUp 0.5s ease-out;
          }
-         h1 { color: #28a745; }
-         p { color: #666; line-height: 1.6; }
-         .icon {
-             font-size: 48px;
+ 
+         @keyframes slideUp {
+             from {
+                 opacity: 0;
+                 transform: translateY(20px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+         }
+ 
+         .success-icon {
+             width: 80px;
+             height: 80px;
+             background: #4CAF50;
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             margin: 0 auto 1.5rem;
+             animation: scaleIn 0.5s ease-out 0.5s both;
+         }
+ 
+         @keyframes scaleIn {
+             from {
+                 transform: scale(0);
+             }
+             to {
+                 transform: scale(1);
+             }
+         }
+ 
+         .success-icon i {
+             color: white;
+             font-size: 40px;
+         }
+ 
+         h1 {
+             color: #1a1a1a;
+             font-size: 2rem;
              margin-bottom: 1rem;
-             color: #28a745;
+             font-weight: 700;
          }
-         .activation-code {
+ 
+         .message {
+             color: #666;
+             font-size: 1.1rem;
+             line-height: 1.6;
+             margin-bottom: 2rem;
+         }
+ 
+         .activation-section {
              background: #f8f9fa;
-             padding: 1rem;
-             border-radius: 4px;
-             font-family: monospace;
-             font-size: 1.2rem;
-             margin: 1rem 0;
-             color: #333;
-             border: 1px solid #dee2e6;
+             padding: 1.5rem;
+             border-radius: 12px;
+             margin: 1.5rem 0;
+             border: 2px dashed #e0e0e0;
+             animation: fadeIn 0.5s ease-out 1s both;
          }
+ 
+         @keyframes fadeIn {
+             from {
+                 opacity: 0;
+             }
+             to {
+                 opacity: 1;
+             }
+         }
+ 
+         .activation-label {
+             color: #666;
+             font-size: 0.9rem;
+             text-transform: uppercase;
+             letter-spacing: 1px;
+             margin-bottom: 0.5rem;
+             font-weight: 600;
+         }
+ 
+         .activation-code {
+             font-family: 'Monaco', monospace;
+             font-size: 1.4rem;
+             color: #2d3748;
+             letter-spacing: 2px;
+             margin: 1rem 0;
+             font-weight: 500;
+             background: white;
+             padding: 1rem;
+             border-radius: 8px;
+             border: 1px solid #e0e0e0;
+         }
+ 
          .copy-button {
-             background: #28a745;
+             background: #4CAF50;
              color: white;
              border: none;
-             padding: 0.5rem 1rem;
-             border-radius: 4px;
+             padding: 0.8rem 2rem;
+             border-radius: 8px;
+             font-size: 1rem;
              cursor: pointer;
-             margin-top: 0.5rem;
-             font-size: 0.9rem;
+             transition: all 0.3s ease;
+             font-weight: 500;
+             display: inline-flex;
+             align-items: center;
+             gap: 8px;
          }
+ 
          .copy-button:hover {
-             background: #218838;
+             background: #43A047;
+             transform: translateY(-1px);
+             box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
          }
+ 
          .copy-success {
-             color: #28a745;
+             color: #4CAF50;
              font-size: 0.9rem;
              margin-top: 0.5rem;
              display: none;
+             animation: fadeInUp 0.3s ease-out;
+         }
+ 
+         @keyframes fadeInUp {
+             from {
+                 opacity: 0;
+                 transform: translateY(10px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+         }
+ 
+         .close-message {
+             margin-top: 2rem;
+             padding-top: 1.5rem;
+             border-top: 1px solid #e0e0e0;
+             color: #666;
+             font-size: 0.95rem;
+             line-height: 1.5;
+         }
+ 
+         .pulse {
+             animation: pulse 2s infinite;
+         }
+ 
+         @keyframes pulse {
+             0% {
+                 box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+             }
+             70% {
+                 box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+             }
+             100% {
+                 box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+             }
          }
      </style>
  </head>
  <body>
      <div class="container">
-         <div class="icon">✓</div>
+         <div class="success-icon">
+             <i class="fas fa-check"></i>
+         </div>
+         
          <h1>Payment Successful!</h1>
-         <p>Thank you for purchasing Push To Talk.</p>
-         
-         <p>Your Activation Code:</p>
-         <div class="activation-code" id="activationCode"></div>
-         <button class="copy-button" onclick="copyCode()">Copy Code</button>
-         <div class="copy-success" id="copySuccess">Code copied!</div>
-         
-         <p>The software will be activated automatically, but you may want to save this code for your records.</p>
-         <p>You may now close this window and return to the application.</p>
+         <p class="message">Thank you for purchasing Push To Talk.</p>
+ 
+         <div class="activation-section">
+             <div class="activation-label">Your Activation Code</div>
+             <div class="activation-code" id="activationCode"></div>
+             <button class="copy-button pulse" onclick="copyCode()">
+                 <i class="fas fa-copy"></i>
+                 Copy Code
+             </button>
+             <div class="copy-success" id="copySuccess">
+                 <i class="fas fa-check"></i> Code copied to clipboard!
+             </div>
+         </div>
+ 
+         <div class="close-message">
+             <p>The software will be activated automatically.</p>
+             <p>You may now close this window and return to the application.</p>
+         </div>
      </div>
  
      <script>
@@ -94,9 +237,13 @@
              navigator.clipboard.writeText(code).then(() => {
                  const successElement = document.getElementById('copySuccess');
                  successElement.style.display = 'block';
+                 
+                 // Remove pulse animation from button
+                 document.querySelector('.copy-button').classList.remove('pulse');
+                 
                  setTimeout(() => {
                      successElement.style.display = 'none';
-                 }, 2000);
+                 }, 3000);
              });
          }
      </script>
