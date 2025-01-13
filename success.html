@@ -1,69 +1,70 @@
 <!-- tetteykn/RepoPagesRedirect/success.html -->
  <!-- https://tetteykn.github.io/RepoPagesRedirect/success.html -->
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Payment Successful - Push To Talk</title>
-     <style>
-         body {
-             font-family: Arial, sans-serif;
-             display: flex;
-             flex-direction: column;
-             align-items: center;
-             justify-content: center;
-             height: 100vh;
-             margin: 0;
-             background-color: #f0f2f5;
-         }
-         .container {
-             text-align: center;
-             padding: 2rem;
-             background: white;
-             border-radius: 8px;
-             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-             max-width: 500px;
-         }
-         h1 { color: #28a745; }
-         p { color: #666; line-height: 1.6; }
-         .icon {
-             font-size: 48px;
-             margin-bottom: 1rem;
-             color: #28a745;
-         }
-         .activation-code {
-             background: #f8f9fa;
-             padding: 1rem;
-             border-radius: 4px;
-             font-family: monospace;
-             font-size: 1.2rem;
-             margin: 1rem 0;
-             color: #333;
-             border: 1px solid #dee2e6;
-         }
-         .copy-button {
-             background: #28a745;
-             color: white;
-             border: none;
-             padding: 0.5rem 1rem;
-             border-radius: 4px;
-             cursor: pointer;
-             margin-top: 0.5rem;
-             font-size: 0.9rem;
-         }
-         .copy-button:hover {
-             background: #218838;
-         }
-         .copy-success {
-             color: #28a745;
-             font-size: 0.9rem;
-             margin-top: 0.5rem;
-             display: none;
-         }
-     </style>
- </head>
- <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Push To Talk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        h1 { color: #28a745; }
+        p { color: #666; line-height: 1.6; }
+        .icon {
+            font-size: 48px;
+            margin-bottom: 1rem;
+            color: #28a745;
+        }
+        .activation-code {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: #333;
+            border: 1px solid #dee2e6;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .copy-button:hover {
+            background: #218838;
+        }
+        .copy-success {
+            color: #28a745;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
     <div class="container">
         <div class="icon">✓</div>
         <h1>Payment Successful!</h1>
@@ -76,9 +77,8 @@
         <p>The software will be activated automatically, but you may want to save this code for your records.</p>
         <p>You may now close this window and return to the application.</p>
     </div>
- 
-     <script>
-        // Function to get URL parameters
+
+    <script>
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -86,20 +86,27 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        // Get and display the activation code
         window.addEventListener('DOMContentLoaded', function() {
-            const encryptedCode = getUrlParameter('code');
-            if (encryptedCode) {
-                // Display the encrypted code directly
-                const codeElement = document.getElementById('activationCode');
-                const decodedCode = atob(encryptedCode); // Decode base64
+            const encodedCode = getUrlParameter('code');
+            if (encodedCode) {
                 try {
-                    const decoded = decodeURIComponent(escape(decodedCode));
-                    codeElement.textContent = decoded;
-                } catch {
-                    codeElement.textContent = decodedCode;
+                    // Direct display of the activation code if it's in the correct format
+                    const codeElement = document.getElementById('activationCode');
+                    const decoded = atob(encodedCode);
+                    
+                    // Format the code with dashes
+                    const parts = decoded.match(/.{1,5}/g);
+                    if (parts && parts.length === 4) {
+                        codeElement.textContent = parts.join('-');
+                    } else {
+                        codeElement.textContent = decoded;
+                    }
+                    
+                    document.querySelector('.copy-button').style.display = 'block';
+                } catch (e) {
+                    console.error('Error decoding activation code:', e);
+                    document.getElementById('activationCode').textContent = 'Error displaying activation code';
                 }
-                document.querySelector('.copy-button').style.display = 'block';
             }
         });
 
@@ -114,5 +121,5 @@
             });
         }
     </script>
- </body>
- </html>
+</body>
+</html>
