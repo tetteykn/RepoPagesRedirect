@@ -1,1 +1,1 @@
-# push-to-talk-payment
+# Apps redirection
