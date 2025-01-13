@@ -64,41 +64,51 @@
      </style>
  </head>
  <body>
-     <div class="container">
-         <div class="icon">✓</div>
-         <h1>Payment Successful!</h1>
-         <p>Thank you for purchasing Push To Talk.</p>
-         
-         <p>Your Activation Code:</p>
-         <div class="activation-code" id="activationCode"></div>
-         <button class="copy-button" onclick="copyCode()">Copy Code</button>
-         <div class="copy-success" id="copySuccess">Code copied!</div>
-         
-         <p>The software will be activated automatically, but you may want to save this code for your records.</p>
-         <p>You may now close this window and return to the application.</p>
-     </div>
+  <div class="container">
+        <div class="icon">✓</div>
+        <h1>Payment Successful!</h1>
+        <p>Thank you for purchasing Push To Talk.</p>
+        
+        <p>Retrieving your activation code...</p>
+        <div class="activation-code" id="activationCode">Loading...</div>
+        <button class="copy-button" onclick="copyCode()" style="display:none">Copy Code</button>
+        <div class="copy-success" id="copySuccess">Code copied!</div>
+        
+        <p>The software will be activated automatically, but you may want to save this code for your records.</p>
+        <p>You may now close this window and return to the application.</p>
+    </div>
  
      <script>
-         // Get activation code from URL parameters
-         function getActivationCode() {
-             const urlParams = new URLSearchParams(window.location.search);
-             return urlParams.get('code') || 'Code not found';
-         }
- 
-         // Display the activation code
-         document.getElementById('activationCode').textContent = getActivationCode();
- 
-         // Copy code function
-         function copyCode() {
-             const code = getActivationCode();
-             navigator.clipboard.writeText(code).then(() => {
-                 const successElement = document.getElementById('copySuccess');
-                 successElement.style.display = 'block';
-                 setTimeout(() => {
-                     successElement.style.display = 'none';
-                 }, 2000);
-             });
-         }
-     </script>
+        // Get order ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('order_id');
+
+        // The application will handle retrieving and displaying the activation code
+        // This removes sensitive data from URLs and browser history
+        window.opener.postMessage({ 
+            type: 'ACTIVATION_REQUEST', 
+            orderId: orderId 
+        }, '*');
+
+        // Handle activation code received from application
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'ACTIVATION_CODE') {
+                document.getElementById('activationCode').textContent = event.data.code;
+                document.querySelector('.copy-button').style.display = 'block';
+            }
+        });
+
+        // Copy code function remains the same
+        function copyCode() {
+            const code = document.getElementById('activationCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const successElement = document.getElementById('copySuccess');
+                successElement.style.display = 'block';
+                setTimeout(() => {
+                    successElement.style.display = 'none';
+                }, 2000);
+            });
+        }
+    </script>
  </body>
  </html>
