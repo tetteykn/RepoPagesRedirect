@@ -64,14 +64,13 @@
      </style>
  </head>
  <body>
-  <div class="container">
+    <div class="container">
         <div class="icon">✓</div>
         <h1>Payment Successful!</h1>
         <p>Thank you for purchasing Push To Talk.</p>
         
-        <p>Retrieving your activation code...</p>
-        <div class="activation-code" id="activationCode">Loading...</div>
-        <button class="copy-button" onclick="copyCode()" style="display:none">Copy Code</button>
+        <div class="activation-code" id="activationCode"></div>
+        <button class="copy-button" onclick="copyCode()">Copy Code</button>
         <div class="copy-success" id="copySuccess">Code copied!</div>
         
         <p>The software will be activated automatically, but you may want to save this code for your records.</p>
@@ -79,26 +78,31 @@
     </div>
  
      <script>
-        // Get order ID from URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const orderId = urlParams.get('order_id');
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
 
-        // The application will handle retrieving and displaying the activation code
-        // This removes sensitive data from URLs and browser history
-        window.opener.postMessage({ 
-            type: 'ACTIVATION_REQUEST', 
-            orderId: orderId 
-        }, '*');
-
-        // Handle activation code received from application
-        window.addEventListener('message', function(event) {
-            if (event.data.type === 'ACTIVATION_CODE') {
-                document.getElementById('activationCode').textContent = event.data.code;
+        // Get and display the activation code
+        window.addEventListener('DOMContentLoaded', function() {
+            const encryptedCode = getUrlParameter('code');
+            if (encryptedCode) {
+                // Display the encrypted code directly
+                const codeElement = document.getElementById('activationCode');
+                const decodedCode = atob(encryptedCode); // Decode base64
+                try {
+                    const decoded = decodeURIComponent(escape(decodedCode));
+                    codeElement.textContent = decoded;
+                } catch {
+                    codeElement.textContent = decodedCode;
+                }
                 document.querySelector('.copy-button').style.display = 'block';
             }
         });
 
-        // Copy code function remains the same
         function copyCode() {
             const code = document.getElementById('activationCode').textContent;
             navigator.clipboard.writeText(code).then(() => {
