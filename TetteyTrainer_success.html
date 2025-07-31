@@ -48,10 +48,23 @@
          <h1>Payment Successful!</h1>
          <p>Thank you for choosing us!</p>
          
+         <div id="gameInfo" style="margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #28a745;">
+             <p style="margin: 0; font-weight: bold; color: #333;">Game Purchased:</p>
+             <p id="gameName" style="margin: 0.5rem 0 0 0; font-size: 1.1rem; color: #28a745; font-weight: bold;">Loading...</p>
+         </div>
+         
          <p>If you face any problem please visit us in discord:<br>
          <a href="https://discord.gg/jRnaeTJ" class="discord-link" target="_blank">https://discord.gg/jRnaeTJ</a></p>
          
          <p>You may now close this window and return to the application.</p>
      </div>
- </body>
- </html>
+     <script>
+         // Get game name from URL parameters
+         function getGameName() {
+             const urlParams = new URLSearchParams(window.location.search);
+             return urlParams.get('game') || 'Unknown Game';
+         }
+
+         // Display the game name
+         document.getElementById('gameName').textContent = decodeURIComponent(getGameName());
+     </script>
