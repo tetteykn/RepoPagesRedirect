@@ -32,34 +32,13 @@
              margin-bottom: 1rem;
              color: #28a745;
          }
-         .activation-code {
-             background: #f8f9fa;
-             padding: 1rem;
-             border-radius: 4px;
-             font-family: monospace;
-             font-size: 1.2rem;
-             margin: 1rem 0;
-             color: #333;
-             border: 1px solid #dee2e6;
+         .discord-link {
+             color: #5865F2;
+             text-decoration: none;
+             font-weight: bold;
          }
-         .copy-button {
-             background: #28a745;
-             color: white;
-             border: none;
-             padding: 0.5rem 1rem;
-             border-radius: 4px;
-             cursor: pointer;
-             margin-top: 0.5rem;
-             font-size: 0.9rem;
-         }
-         .copy-button:hover {
-             background: #218838;
-         }
-         .copy-success {
-             color: #28a745;
-             font-size: 0.9rem;
-             margin-top: 0.5rem;
-             display: none;
+         .discord-link:hover {
+             text-decoration: underline;
          }
      </style>
  </head>
@@ -69,36 +48,10 @@
          <h1>Payment Successful!</h1>
          <p>Thank you for choosing us!</p>
          
-         <p>Your Activation Code:</p>
-         <div class="activation-code" id="activationCode"></div>
-         <button class="copy-button" onclick="copyCode()">Copy Code</button>
-         <div class="copy-success" id="copySuccess">Code copied!</div>
+         <p>If you face any problem please visit us in discord:<br>
+         <a href="https://discord.gg/jRnaeTJ" class="discord-link" target="_blank">https://discord.gg/jRnaeTJ</a></p>
          
-         <p>The software will be activated automatically, but you may want to save this code for your records.</p>
          <p>You may now close this window and return to the application.</p>
      </div>
- 
-     <script>
-         // Get activation code from URL parameters
-         function getActivationCode() {
-             const urlParams = new URLSearchParams(window.location.search);
-             return urlParams.get('code') || 'Code not found';
-         }
- 
-         // Display the activation code
-         document.getElementById('activationCode').textContent = getActivationCode();
- 
-         // Copy code function
-         function copyCode() {
-             const code = getActivationCode();
-             navigator.clipboard.writeText(code).then(() => {
-                 const successElement = document.getElementById('copySuccess');
-                 successElement.style.display = 'block';
-                 setTimeout(() => {
-                     successElement.style.display = 'none';
-                 }, 2000);
-             });
-         }
-     </script>
  </body>
  </html>
