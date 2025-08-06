@@ -119,7 +119,8 @@
             const urlParams = new URLSearchParams(window.location.search);
             return {
                 game: urlParams.get('game') || 'Unknown Game',
-                orderId: urlParams.get('orderId') || null
+                // PayPal redirects with 'token' parameter which is the order ID
+                orderId: urlParams.get('token') || urlParams.get('orderId') || null
             };
         }
 
