@@ -9,25 +9,38 @@
   body {
     margin: 0; min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
+    padding: 24px;
     font-family: system-ui, "Segoe UI", Roboto, sans-serif;
     background: #1e1e2e; color: #e6e6f0;
   }
   .card {
-    width: 100%; max-width: 520px;
+    width: 100%; max-width: 540px;
     background: #2a2a3c; border: 1px solid #3a3a52; border-radius: 14px;
-    padding: 32px 36px; box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+    padding: 30px 34px; box-shadow: 0 20px 50px rgba(0,0,0,0.45);
   }
-  .dots { display: flex; gap: 8px; margin-bottom: 22px; }
+  .dots { display: flex; gap: 8px; margin-bottom: 20px; }
   .dots span { width: 12px; height: 12px; border-radius: 50%; }
   .dots span:nth-child(1) { background: #ff5f57; }
   .dots span:nth-child(2) { background: #febc2e; }
   .dots span:nth-child(3) { background: #28c840; }
   h1 { margin: 0 0 6px; font-size: 24px; }
   p.tag { margin: 0 0 22px; color: #a7a7bd; font-size: 15px; }
-  ul { margin: 0 0 22px; padding-left: 20px; color: #cfcfe0; line-height: 1.7; }
-  a { color: #7fb4ff; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  footer { margin-top: 26px; font-size: 13px; color: #7c7c95; }
+  .apps { display: flex; flex-direction: column; gap: 10px; margin: 0 0 24px; }
+  .app {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 12px 14px;
+    background: #232334; border: 1px solid #34344c; border-radius: 10px;
+    color: #e6e6f0; text-decoration: none;
+    transition: border-color .15s, background .15s, transform .15s;
+  }
+  .app:hover { border-color: #5a6cff; background: #2c2c42; transform: translateY(-1px); }
+  .app .name { font-size: 15px; font-weight: 600; }
+  .app .hint { font-size: 12px; color: #8a8aa3; }
+  .soon { font-size: 11px; color: #febc2e; border: 1px solid #6a5620; background: #33290f;
+          padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+  a.mail { color: #7fb4ff; text-decoration: none; }
+  a.mail:hover { text-decoration: underline; }
+  footer { margin-top: 24px; font-size: 13px; color: #7c7c95; }
 </style>
 </head>
 <body>
@@ -35,12 +48,25 @@
     <div class="dots"><span></span><span></span><span></span></div>
     <h1>Zouaouid Tech</h1>
     <p class="tag">Windows utilities and productivity apps.</p>
-    <ul>
-      <li>Lightweight, native desktop tools</li>
-      <li>One-time purchase, lifetime license</li>
-      <li>Offline activation &mdash; no account needed</li>
-    </ul>
-    <p>Support &amp; enquiries: <a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+    <nav class="apps">
+      <a class="app" href="https://github.com/tetteykn/PushToTalk">
+        <span class="name">Push To Talk</span>
+      </a>
+      <a class="app" href="https://github.com/tetteykn/Brightness_Control_Ultimate">
+        <span class="name">Brightness Control Ultimate</span>
+      </a>
+      <a class="app" href="https://github.com/tetteykn/MouseButtonsMapper">
+        <span class="name">Mouse Mapper</span>
+      </a>
+      <a class="app" href="https://github.com/tetteykn/OmegaFile">
+        <span class="name">OmegaFile</span>
+      </a>
+      <a class="app" href="https://github.com/tetteykn/Net-Throttle">
+        <span class="name">Net-Throttle</span>
+        <span class="soon">Coming soon</span>
+      </a>
+    </nav>
+    <p>Support &amp; enquiries: <a class="mail" href="mailto:zouaouidtech@gmail.com">zouaouidtech@gmail.com</a></p>
     <footer>&copy; 2026 Zouaouid Tech. All rights reserved.</footer>
   </main>
 </body>
