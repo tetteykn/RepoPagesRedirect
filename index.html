@@ -28,11 +28,11 @@
   header{position:sticky;top:0;z-index:10;background:rgba(15,15,26,.72);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
   .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px;}
-  .logo{width:32px;height:32px;border-radius:9px;flex:none;
-    background-image:url("logo.png"),linear-gradient(135deg,var(--accent),var(--accent2));
-    background-size:contain,cover;background-position:center;background-repeat:no-repeat;
-    box-shadow:0 4px 12px rgba(0,0,0,.3);}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .brand-logo{height:36px;width:auto;max-width:220px;display:block;}
+  .brand-text{font-weight:700;font-size:18px;letter-spacing:.2px;color:var(--text);}
+  .hero-logo{height:clamp(130px,28vw,320px);width:auto;max-width:94%;margin:0 auto 30px;
+    display:block;filter:drop-shadow(0 16px 44px rgba(108,124,255,.45));}
   .nav-links{display:flex;gap:22px;font-size:14px;}
   .nav-links a{color:var(--muted);text-decoration:none;}
   .nav-links a:hover{color:var(--text);}
@@ -102,9 +102,14 @@
 </style>
 </head>
 <body>
-  <header>
+  <header id="top">
     <div class="wrap nav">
-      <div class="brand"><span class="logo" aria-hidden="true"></span> Zouaouid Tech</div>
+      <a class="brand" href="#top">
+        <img class="brand-logo" src="logo.png" alt="Zouaouid Tech"
+             onload="this.nextElementSibling.style.display='none'"
+             onerror="this.style.display='none'">
+        <span class="brand-text">Zouaouid Tech</span>
+      </a>
       <nav class="nav-links">
         <a href="#apps">Apps</a>
         <a href="#connect">Community</a>
@@ -115,6 +120,7 @@
 
   <main class="wrap">
     <section class="hero">
+      <img class="hero-logo" src="logo.png" alt="Zouaouid Tech" onerror="this.style.display='none'">
       <span class="eyebrow">Windows utilities</span>
       <h1>Small, fast tools<br>that do one thing well.</h1>
       <p>Zouaouid Tech builds native Windows apps &mdash; no bloat, no subscriptions, and they keep working offline once activated.</p>
@@ -135,34 +141,34 @@
     <section id="apps">
       <div class="sec-head">
         <h2>Apps</h2>
-        <p>Built for Windows. Source available on GitHub.</p>
+        <p>Built for Windows. Download from the Microsoft Store.</p>
       </div>
       <div class="apps">
-        <a class="app" href="https://github.com/tetteykn/PushToTalk">
+        <a class="app" href="https://apps.microsoft.com/store/detail/XPFFXFLM1PQ6VR" target="_blank" rel="noopener">
           <span class="tile">P</span>
           <h3>Push To Talk</h3>
           <p>Push-to-talk, push-to-mute, and toggle-microphone control with per-app profiles.</p>
-          <span class="go">View on GitHub &rarr;</span>
+          <span class="go">Get it on Microsoft Store &rarr;</span>
         </a>
-        <a class="app" href="https://github.com/tetteykn/Brightness_Control_Ultimate">
+        <a class="app" href="https://apps.microsoft.com/store/detail/XPDFG2GT0FZBRV" target="_blank" rel="noopener">
           <span class="tile">B</span>
           <h3>Brightness Control Ultimate</h3>
           <p>Adjust and take control of your display brightness.</p>
-          <span class="go">View on GitHub &rarr;</span>
+          <span class="go">Get it on Microsoft Store &rarr;</span>
         </a>
-        <a class="app" href="https://github.com/tetteykn/MouseButtonsMapper">
+        <a class="app" href="https://apps.microsoft.com/store/detail/XP99GV6PKQ8M58" target="_blank" rel="noopener">
           <span class="tile">M</span>
           <h3>Mouse Mapper</h3>
           <p>Remap your mouse buttons to the actions you want.</p>
-          <span class="go">View on GitHub &rarr;</span>
+          <span class="go">Get it on Microsoft Store &rarr;</span>
         </a>
-        <a class="app" href="https://github.com/tetteykn/OmegaFile">
+        <a class="app" href="https://apps.microsoft.com/store/detail/XPDP197B14DM02" target="_blank" rel="noopener">
           <span class="tile">O</span>
           <h3>OmegaFile</h3>
           <p>File management tools for Windows Explorer.</p>
-          <span class="go">View on GitHub &rarr;</span>
+          <span class="go">Get it on Microsoft Store &rarr;</span>
         </a>
-        <a class="app" href="https://github.com/tetteykn/Net-Throttle">
+        <a class="app" href="https://github.com/tetteykn/Net-Throttle" target="_blank" rel="noopener">
           <span class="tile">N</span>
           <h3>Net-Throttle <span class="soon">Coming soon</span></h3>
           <p>Network traffic control and management.</p>
