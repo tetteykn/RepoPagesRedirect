@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OmegaFile â€” Zouaouid Tech</title>
+<title>OmegaFile — Zouaouid Tech</title>
 <meta name="description" content="OmegaFile copies folders dramatically faster than Windows Explorer with an adaptive copy engine, and includes Force Delete for files Windows refuses to remove.">
 <style>
   :root{
@@ -186,29 +186,29 @@
       </div>
 
       <p class="lede">You copy a folder, walk away, come back twenty minutes later and it
-        still isn't done â€” even though the folder is only a few gigabytes. Meanwhile a single
+        still isn't done — even though the folder is only a few gigabytes. Meanwhile a single
         20&nbsp;GB video copied last week finished in under two minutes.</p>
 
       <p class="lede">The answer has nothing to do with total size or drive speed. It has
         everything to do with the <strong>number of files</strong>.</p>
 
-      <p class="lede">Windows processes each file individually â€” open, read, write, close, move
+      <p class="lede">Windows processes each file individually — open, read, write, close, move
         on. For one large file that's fine. But a folder of thousands of small files makes
         Windows repeat that entire sequence thousands of times, each one costing multiple calls
         into the OS kernel plus a separate disk operation for metadata. With 10,000 files that's
-        potentially 80,000â€“100,000 individual system operations before a single byte of your
+        potentially 80,000–100,000 individual system operations before a single byte of your
         actual data has finished moving.</p>
 
       <p class="lede">That is why a folder with 50,000 small files totalling just 1&nbsp;GB can
         take <strong>over an hour</strong> in Windows, while a 20&nbsp;GB video copies in minutes.
-        The bottleneck isn't your disk â€” it's the way Windows handles each file one at a time.
+        The bottleneck isn't your disk — it's the way Windows handles each file one at a time.
         <strong>OmegaFile solves this completely.</strong></p>
     </section>
 
     <section id="bench">
       <div class="sec-head">
         <h2>Benchmark</h2>
-        <p>A direct comparison copying a real folder â€” same machine, same source, same destination, same files.</p>
+        <p>A direct comparison copying a real folder — same machine, same source, same destination, same files.</p>
       </div>
 
       <div class="panel">
@@ -220,7 +220,7 @@
             <tr><td>Folder contents</td><td>3,947 files</td><td>3,947 files</td></tr>
             <tr><td>Total size</td><td>81.1 MB</td><td>81.1 MB</td></tr>
             <tr><td>Time to complete</td><td class="win-num">26 seconds</td><td class="of">5 seconds</td></tr>
-            <tr><td>Speed improvement</td><td>â€”</td><td class="of">5.2&times; faster</td></tr>
+            <tr><td>Speed improvement</td><td>—</td><td class="of">5.2&times; faster</td></tr>
           </tbody>
         </table>
         <p class="note">This advantage only grows as file counts increase. At 10,000 files the
@@ -235,14 +235,14 @@
       <div class="sec-head">
         <h2>How it copies so much faster</h2>
         <p>OmegaFile uses an adaptive copy engine that picks the best strategy for what you are
-          copying. You never choose â€” it detects and decides instantly.</p>
+          copying. You never choose — it detects and decides instantly.</p>
       </div>
 
       <div class="cards">
         <div class="card">
           <h3>Single file</h3>
           <span class="strat">Strategy A</span>
-          <p>Uses Windows' native <code>CopyFileEx</code> API directly â€” the most efficient
+          <p>Uses Windows' native <code>CopyFileEx</code> API directly — the most efficient
              path possible for one file, with real-time progress reporting so you always see
              exactly how far along the copy is.</p>
         </div>
@@ -258,7 +258,7 @@
         <div class="card">
           <h3>Large collections</h3>
           <span class="strat">Strategy C &middot; up to 100,000 files</span>
-          <p>Uses <strong>IOCP (I/O Completion Ports)</strong> â€” the same technology inside
+          <p>Uses <strong>IOCP (I/O Completion Ports)</strong> — the same technology inside
              high-performance web servers and database engines. Up to 24 copy operations are
              submitted to the OS simultaneously and completions are processed as they arrive,
              keeping the disk queue full so data moves without gaps.</p>
@@ -283,7 +283,7 @@
 
       <p class="lede">Windows sometimes refuses to delete files. You see errors like
         <em>"The file is open in another program"</em>, <em>"Access is denied"</em>, or
-        <em>"You need administrator permission"</em> â€” even when no program is visibly using
+        <em>"You need administrator permission"</em> — even when no program is visibly using
         the file.</p>
 
       <div class="panel">
@@ -291,7 +291,7 @@
            ownership of the file, strips all blocking attributes, closes any open handles it can
            reach, and removes the item.</p>
         <p>For files so deeply locked that even these steps cannot free them, OmegaFile schedules
-           them for <strong>automatic deletion the next time Windows restarts</strong> â€” the file
+           them for <strong>automatic deletion the next time Windows restarts</strong> — the file
            is gone on next boot, with no manual steps required.</p>
       </div>
     </section>
@@ -306,7 +306,7 @@
           <h3>Intelligent adaptive copying</h3>
           <p>OmegaFile scans your selection in under a second, counts the files, measures the
              total size, and automatically picks the right strategy. No settings to configure,
-             no modes to select â€” it just works.</p>
+             no modes to select — it just works.</p>
         </div>
 
         <div class="card">
@@ -319,7 +319,7 @@
         <div class="card">
           <h3>Windows context menu</h3>
           <p>Adds an <strong>OmegaFile</strong> submenu to your right-click menu on any file or
-             folder with Copy, Cut, Delete and Force Delete â€” plus
+             folder with Copy, Cut, Delete and Force Delete — plus
              <strong>OmegaFile: Paste</strong> inside any folder.</p>
           <p>Registered automatically during installation and removed on uninstall. Toggle it
              any time from Settings.</p>
@@ -347,9 +347,9 @@
           <h3>When Windows copy is fine</h3>
           <p>The advantage is most visible when copying <strong>more than a few hundred
              files</strong>, with <strong>deep subfolder structures</strong>, of
-             <strong>small files</strong> under 1&nbsp;MB each â€” especially when Windows shows
+             <strong>small files</strong> under 1&nbsp;MB each — especially when Windows shows
              an estimate of several minutes for data under 1&nbsp;GB.</p>
-          <p>For everyday simple copies â€” one document, a few photos â€” Windows copy is perfectly
+          <p>For everyday simple copies — one document, a few photos — Windows copy is perfectly
              adequate.</p>
         </div>
       </div>
@@ -388,23 +388,23 @@
       </div>
 
       <p class="note">And anyone who has ever watched a Windows copy dialog sit at
-        "Calculating..." for five minutes â€” that delay is Windows counting your files one at a
+        "Calculating..." for five minutes — that delay is Windows counting your files one at a
         time before it even starts. OmegaFile begins copying almost instantly.</p>
     </section>
 
     <section id="buy">
       <div class="sec-head">
         <h2>Getting it</h2>
-        <p>Try it first â€” the trial has full functionality.</p>
+        <p>Try it first — the trial has full functionality.</p>
       </div>
 
       <div class="panel">
         <h3>How purchase and activation work</h3>
         <p>OmegaFile includes a <strong>free trial</strong> with full functionality. After the
-           trial, a <strong>one-time purchase</strong> unlocks permanent access â€” there are
+           trial, a <strong>one-time purchase</strong> unlocks permanent access — there are
            <strong>no subscriptions and no recurring fees</strong>.</p>
         <p><strong>Online:</strong> if the device is connected and a previous purchase is
-           recognised, OmegaFile activates automatically â€” no key entry required.</p>
+           recognised, OmegaFile activates automatically — no key entry required.</p>
         <p><strong>Offline:</strong> if the server is unavailable or you prefer to, enter the
            serial key manually. Once activated the app works without a connection.</p>
       </div>
@@ -413,7 +413,7 @@
         <h3>Direct installer</h3>
         <p>Prefer the installer over the Store? Download the signed <code>.msi</code> straight
            from the <a href="https://github.com/tetteykn/OmegaFile/releases" target="_blank" rel="noopener">releases page</a>
-           â€” it installs the same application.</p>
+           — it installs the same application.</p>
         <p class="note">The Microsoft Store build is the recommended route: it updates itself
            and is the listing customers generally expect.</p>
       </div>
@@ -441,7 +441,7 @@
           <tr><th>Duration</th><td>Permanent (lifetime) access on the licensed device.</td></tr>
           <tr><th>Multiple devices</th><td>Separate licenses are required for simultaneous use.</td></tr>
           <tr><th>Offline use</th><td>Supported. No ongoing connection is needed after activation.</td></tr>
-          <tr><th>Data collected</th><td>Your name, device hardware identifier, and registration/activation dates â€” used solely to verify the license. Never shared with third parties.</td></tr>
+          <tr><th>Data collected</th><td>Your name, device hardware identifier, and registration/activation dates — used solely to verify the license. Never shared with third parties.</td></tr>
           <tr><th>Payments</th><td>Payment information is processed by the payment provider and never stored by us.</td></tr>
           <tr><th>Refunds</th><td>Not issued once an activation code has been generated, because codes are device-bound and cannot be revoked.</td></tr>
         </table>
@@ -477,7 +477,7 @@
   <footer>
     <div class="wrap">
       &copy; 2026 Zouaouid Tech. All rights reserved.<br>
-      <a href="index.html">Zouaouid Tech â€” Windows utilities</a>
+      <a href="index.html">Zouaouid Tech — Windows utilities</a>
     </div>
   </footer>
 </body>

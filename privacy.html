@@ -150,9 +150,11 @@
       </div>
       <p class="lede">Our apps are licensed to a single device, so we need one value that
         identifies that device. That value is derived from standard hardware identifiers reported
-        by Windows. <strong>We do not collect your name, your email, your files, your browsing,
-        your location, or anything about how you use the apps.</strong> There is no analytics
-        SDK, no advertising SDK, and no telemetry.</p>
+        by Windows. On first run you are also asked to type a name of your own choosing, so we can
+        find your license quickly if you ever contact support &mdash; it is a label you invent, not
+        your legal name, and we never ask you to prove it. <strong>We do not collect your legal
+        name, your email, your files, your browsing, your location, or anything about how you use
+        the apps.</strong> There is no analytics SDK, no advertising SDK, and no telemetry.</p>
 
       <div class="toc">
         <h3>On this page</h3>
@@ -178,7 +180,7 @@
         <p>Only what is needed to verify a license on the device it was activated on.</p>
       </div>
 
-      <table>
+<table>
         <tr><th>Device identifier</th>
             <td>A single value derived from hardware identifiers Windows already exposes:
                 the <strong>SMBIOS system UUID</strong>, the <strong>CPU processor ID</strong>,
@@ -188,6 +190,14 @@
             <td>Computer manufacturer and model, and the BIOS manufacturer, read from standard
                 Windows hardware classes. Used to recognise virtual machines, which is part of
                 the licensing model. It is not stored with your license record.</td></tr>
+        <tr><th>Display name</th>
+            <td>The name you type yourself when you first run the app. It is a label you choose
+                to help us identify your license during support. It is not your legal name, it is
+                not verified, and it does not have to resemble your real name.</td></tr>
+        <tr><th>Activation key and dates</th>
+            <td>The activation key issued for your license, and the date of registration and
+                activation. These are held so the app can run without a connection afterwards and
+                so we can confirm a license is valid.</td></tr>
         <tr><th>License state</th>
             <td>Whether this device is activated, the activation code, and the trial state. This
                 is written to a registry key under
@@ -210,9 +220,10 @@
 
       <div class="cards">
         <div class="card good">
-          <h3>No personal identity</h3>
-          <p>We do not ask for, receive or store your name, postal address, phone number, or
-             email address as part of licensing.</p>
+          <h3>No legal identity</h3>
+          <p>We do not ask for, receive or store your legal name, postal address, phone number, or
+             email address as part of licensing. The only name we hold is the one you type
+             yourself on first run, and you are free to make it anything.</p>
         </div>
         <div class="card good">
           <h3>No network identifiers</h3>
@@ -242,6 +253,8 @@
         <li>To prevent one license being used on more devices than it is issued for.</li>
         <li>To record that an activation happened, so the app can run without a connection afterwards.</li>
         <li>To determine trial eligibility for this device.</li>
+        <li>To find your license record quickly if you contact support and give us the display name
+            you chose.</li>
       </ul>
       <p>The identifier is used for those purposes only. It is not used for advertising, and it
         is not combined with any other data about you.</p>
@@ -267,8 +280,10 @@
            <code>HKEY_CURRENT_USER\Software</code>. Nothing is written to machine-wide or shared
            locations.</p>
         <p><strong>On our side:</strong> the device identifier is stored as the key of a license
-           record that holds whether that device is activated. The record does not contain your
-           name, your email, or anything about your computer beyond that identifier.</p>
+           record that holds whether that device is activated. The record also holds the display
+           name you chose, your activation key, and the date of registration and activation. It
+           does not contain your legal name, your email address, or anything about your computer
+           beyond that identifier.</p>
       </div>
     </section>
 
